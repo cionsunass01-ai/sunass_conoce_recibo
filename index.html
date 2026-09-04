@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explica referencialmente a qué se destina el pago de un recibo de saneamiento de SEDAPAR." />
+    <title>Mi Recibo Claro | SEDAPAR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <nav class="nav" aria-label="Principal">
+        <a class="brand" href="#inicio"><span class="brand-mark">⌁</span> Mi Recibo Claro</a>
+        <span class="nav-label">Consulta tarifaria referencial</span>
+      </nav>
+
+      <section id="inicio" class="hero">
+        <div>
+          <p class="eyebrow">Saneamiento con transparencia</p>
+          <h1>Entiende qué impulsa tu recibo de agua.</h1>
+          <p class="lead">Ingresa el monto de tu recibo y descubre, en palabras simples, qué parte sostiene el servicio y qué parte ayuda a financiar obras para mañana.</p>
+        </div>
+      </section>
+
+      <section class="calculator" aria-labelledby="calculator-title">
+        <div class="panel form-panel">
+          <p class="eyebrow">Configura tu recibo</p>
+          <h2 id="calculator-title">Entendamos tu pago</h2>
+          <form id="receipt-form">
+            <div class="field-row"><div><label for="provider">Empresa</label><select id="provider"><option value="sedapar">SEDAPAR · Arequipa</option><option value="sedapal">SEDAPAL · Lima y Callao</option></select></div><div><label for="location">Distrito o localidad</label><select id="location"></select></div></div>
+            <label for="category">Categoría que figura en tu recibo</label>
+            <select id="category"></select>
+            <label for="amount">Monto total del recibo</label>
+            <div class="amount-field"><span>S/</span><input id="amount" name="amount" type="number" min="0.01" step="0.01" value="65.00" required /></div>
+
+            <button type="submit">Entender mi recibo <span>→</span></button>
+          </form>
+          <p class="form-hint">Confirma la categoría que aparece en tu recibo. “Doméstico subsidiado” aplica solo si el recibo lo indica; la app no lo infiere por monto.</p>
+        </div>
+
+        <section class="panel results" aria-live="polite" aria-labelledby="result-title">
+          <div class="result-heading">
+            <div>
+              <p class="eyebrow">Estimación para tu recibo</p>
+              <h2 id="result-title">Tu recibo, explicado</h2>
+            </div>
+            <span class="period-badge">Año regulatorio 5</span>
+          </div>
+          <div class="chart-wrap">
+            <div class="donut" id="donut" role="img" aria-label="30.7 por ciento para inversión y 69.3 por ciento para operación"><div><strong id="capex-percent">30.7%</strong><span>para obras</span></div></div>
+            <div class="legend">
+              <div><span class="dot capex"></span><p><strong>CAPEX · Obras</strong><small>Infraestructura y mejora</small></p><output id="capex-value">S/ 19.96</output></div>
+              <div><span class="dot opex"></span><p><strong>OPEX · Servicio diario</strong><small>Operación y mantenimiento</small></p><output id="opex-value">S/ 45.04</output></div>
+            </div>
+          </div>
+          <div class="estimated-volume"><span>Consumo estimado</span><strong id="volume-value">— m³</strong><small>Se reconstruye con tarifa, categoría y localidad confirmadas.</small></div>
+          <p class="result-copy" id="result-copy">De manera referencial, tu pago sostiene el servicio de todos los días y también las inversiones planificadas para mejorar la infraestructura.</p>
+        </section>
+      </section>
+
+      <section class="bill-explainer" aria-labelledby="why-title">
+        <div class="bill-intro"><p class="eyebrow">Tu recibo, paso a paso</p><h2 id="why-title">Así se forma lo que pagas</h2><p>Primero vemos el agua que usaste. Después sumamos el servicio listo para ti y los impuestos.</p></div>
+        <article class="bill-card">
+          <span class="zone-chip" id="tariff-reference">Referencia vigente</span>
+          <div class="tier-grid" id="tier-grid"></div>
+          <div class="bill-lines"><div><span>Lo que costó el agua que usaste</span><strong id="variable-value">S/ 51.37</strong></div><div><span>Para que el servicio esté listo para ti <em>· cargo fijo</em></span><strong id="fixed-value">S/ 3.71</strong></div><p class="fixed-note">Ayuda a mantener tuberías, medidores y atención, aunque uses poca agua.</p><div><span>Costo del servicio antes de impuestos</span><strong id="subtotal-value">S/ 55.08</strong></div><div><span>Impuestos (IGV/IPM 18%) <span class="tax-help" tabindex="0">ⓘ<span>Este dinero va al Estado.</span></span></span><strong id="tax-value">S/ 9.92</strong></div><div class="receipt-total"><span>Esto es lo que pagas este mes</span><strong id="receipt-total">S/ 65.00</strong></div></div>
+          <a href="https://www.gob.pe/institucion/sunass/normas-legales/7549273-146-2025-sunass-cd" target="_blank" rel="noreferrer">Revisar estructura tarifaria de SUNASS <span>↗</span></a>
+        </article>
+      </section>
+
+      <section class="portfolio" aria-labelledby="portfolio-title">
+        <div><p class="eyebrow">Fondos y obras reguladas</p><h2 id="portfolio-title">¿Qué financia la parte de inversión?</h2><p id="portfolio-summary">Selecciona una empresa para ver fondos, reservas y proyectos.</p></div>
+        <div class="fund-grid" id="fund-grid"></div>
+        <div class="project-heading"><h3>Proyectos programados</h3><div id="project-filters" class="filters"></div></div>
+        <div id="project-list" class="project-list"></div>
+        <p class="portfolio-note">El monto de tu recibo alimenta fondos comunes; no existe una asignación oficial de cada recibo a una obra. Los importes de la lista son presupuestos totales del estudio, sin IGV.</p>
+      </section>
+
+      <section class="methodology">
+        <span>i</span><p><strong>Cómo leer esta prueba.</strong> La SUNASS fija un cargo fijo y tarifas por m³; con solo el monto no es posible reconstruir los tramos reales de un recibo. El estudio tarifario 2021–2026 destina 30.7% de ingresos facturados (sin IGV/IPM) al Fondo de Inversiones. Este prototipo aplica esa proporción al monto ingresado para explicarlo de forma sencilla.</p>
+      </section>
+    </main>
+    <footer><span>Mi Recibo Claro</span><span>Mockup informativo · No es un canal oficial de SEDAPAR ni SUNASS</span></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
